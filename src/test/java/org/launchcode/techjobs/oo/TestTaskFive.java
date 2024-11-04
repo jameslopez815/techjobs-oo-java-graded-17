@@ -37,10 +37,11 @@ public class TestTaskFive extends AbstractTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Job job = createJob("Web Developer", "LaunchCode", "StL", "Back-end developer", "Java");
-        
+
         assertTrue(job.toString().startsWith(lineSeparator()));
         assertTrue(job.toString().endsWith(lineSeparator()));
     }
+
 
     @Test
     public void testTestToStringContainsCorrectLabelsAndDataExists () throws ClassNotFoundException {
