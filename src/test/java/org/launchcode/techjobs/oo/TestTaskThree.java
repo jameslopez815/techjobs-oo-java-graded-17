@@ -225,8 +225,10 @@ public class TestTaskThree extends AbstractTest {
             fail("Job does not declare an equals method");
         }
             //ADDED CODE
-        assertTrue("Jobs with the same attributes should be equal", job.equals(anotherJob));
-//
+        //assertTrue("Jobs with the same attributes should be equal", job.equals(anotherJob));
+        assertEquals(job, job);
+        assertFalse(job.equals(anotherJob));
+        assertNotEquals(getJobId(job), getJobId(anotherJob));
 
         // Use reflection to make both objects have the same id and test
         Field anotherJobIdField = Job.class.getDeclaredField("id");
@@ -261,11 +263,8 @@ public class TestTaskThree extends AbstractTest {
         int hashCode1 = (int) hashCodeMethod.invoke(job);
         int hashCode2 = (int) hashCodeMethod.invoke(anotherJob);
 
-        // ADDED CODE Assert that the hash codes are equal
-        assertEquals(hashCode1, hashCode2);
-
-//        assertEquals(job.hashCode(), job.hashCode());
-//        assertNotEquals(job.hashCode(), anotherJob.hashCode());
+        assertEquals(job.hashCode(), job.hashCode());
+        assertNotEquals(job.hashCode(), anotherJob.hashCode());
 
         // Use reflection to make both objects have the same id and test
         Field anotherJobIdField = Job.class.getDeclaredField("id");

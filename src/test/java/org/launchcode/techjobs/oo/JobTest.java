@@ -36,11 +36,11 @@ public class JobTest {
     public void testJobsForEquality() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals(job1, job2); // To work correctly, the Job class must have an overridden equals() method that compares the relevant fields of the objects.
+        assertNotEquals(job1, job2); // To work correctly, the Job class must have an overridden equals() method that compares the relevant fields of the objects.
     }
 
     @Test // Check if the toString representation of a Job object starts and ends with a new line character. (Task 5)
-    public void testToStringStartsAndEndsWithNewLine() {
+    public void testToStringStartsAndEndsWithNewLine() { //Instantiate a Job object with various parameters
         Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertEquals(job.toString().startsWith(lineSeparator()), true);
         assertEquals(job.toString().endsWith(lineSeparator()), true);
@@ -57,5 +57,6 @@ public class JobTest {
         Job job1 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType(""), new CoreCompetency("Persistence"));
         String notAvailable = "Data not available";
         assertEquals(String.format("%nID: %d%nName: %s%nEmployer: %s%nLocation: %s%nPosition Type: %s%nCore Competency: %s%n", job1.getId(), "Product tester", notAvailable, "Desert", notAvailable, "Persistence"), job1.toString());
-    }
+    } // Output: formatted string with job's ID, name, and other fields, replacing empty fields with "Data not available".
+
 }
